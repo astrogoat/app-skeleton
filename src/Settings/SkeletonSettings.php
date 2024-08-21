@@ -7,11 +7,13 @@ use Illuminate\Validation\Rule;
 
 class SkeletonSettings extends AppSettings
 {
-    // public string $url; // Example, modify to fit your need.
+    // public string $url;
 
     public function rules(): array
     {
-//        'url' => Rule::requiredIf($this->enabled === true), // Example, modify to fit your need.
+        // return [
+        //     'url' => Rule::requiredIf($this->enabled === true),
+        // ];
     }
 
     public function description(): string
