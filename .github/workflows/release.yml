@@ -31,15 +31,25 @@ jobs:
           git config user.name "Miles Bot"
           git config user.email "miles@helixsleep.com"
 
-      - name: Bump version
-        id: bump-version
-        run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
-
       - name: Build assets
         run: |
           npm install
           npm run prod
+
+      - name: Build assets status
+        id: build_assets_status
+        run: echo "updated=$(git status -s | tr -d '\n' | wc -m)" >> $GITHUB_OUTPUT
+
+      - name: Commit Build Assets
+        if: steps.build_assets_status.outputs.updated != '0'
+        run: |
           git add -A public
+          git commit -m "Build assets"
+          git push origin main
+
+      - name: Bump version
+        id: bump-version
+        run: echo "version=$(npm version ${{ inputs.level }} --tag-version-prefix=)" >> $GITHUB_OUTPUT
 
       # Make sure that the Miles Bot user is included in the list of users who can bypass required pull request requirement
       # Your repo -> Settings -> Branches -> Main (edit) -> "Allow specified actors to bypass required pull requests"
