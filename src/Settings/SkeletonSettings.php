@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 
 class SkeletonSettings extends AppSettings
 {
-    // public string $url; // Example, modify to fit your need.
+    // public string $url;
 
     public function rules(): array
     {
