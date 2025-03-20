@@ -141,8 +141,8 @@ foreach ($files as $file) {
         str_contains($file, 'src/Settings/SkeletonSettings.php') => rename($file, './src/Settings/' . $className . 'Settings.php'),
         str_contains($file, 'database/migrations/settings/create_skeleton_settings.php') => rename($file, './database/migrations/settings/' . date('Y_m_d_His') . '_create_' . $packageSlugWithoutPrefix . '_settings.php'),
         str_contains($file, 'config/skeleton.php') => rename($file, './config/' . $packageSlugWithoutPrefix . '.php'),
-        str_contains($file, 'public/css/skeleton.css') => rename($file, './public/css/' . $packageSlugWithoutPrefix . '.css'),
-        str_contains($file, 'public/js/skeleton.js') => rename($file, './public/js/' . $packageSlugWithoutPrefix . '.js'),
+        str_contains($file, 'resources/css/skeleton.css') => rename($file, './resources/css/' . $packageSlugWithoutPrefix . '.css'),
+        str_contains($file, 'resources/js/skeleton.js') => rename($file, './resources/js/' . $packageSlugWithoutPrefix . '.js'),
         default => [],
     };
 }
