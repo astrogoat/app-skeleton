@@ -44,6 +44,7 @@ jobs:
         if: steps.build_assets_status.outputs.updated != '0'
         run: |
           git add -A public
+          git add -A package-lock.json
           git commit -m "Build assets"
           git push origin main
 
