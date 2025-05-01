@@ -46,7 +46,7 @@ jobs:
           git add -A public
           git add -A package-lock.json
           git commit -m "Build assets"
-          git push origin main
+          git push origin ${{ github.ref_name }}
 
       - name: Bump version
         id: bump-version
@@ -55,7 +55,7 @@ jobs:
       # Make sure that the Miles Bot user is included in the list of users who can bypass required pull request requirement
       # Your repo -> Settings -> Branches -> Main (edit) -> "Allow specified actors to bypass required pull requests"
       - name: Push changes
-        run: git push origin main
+        run: git push origin ${{ github.ref_name }}
 
       - name: Push tag
         run: git push origin ${{ steps.bump-version.outputs.version }}
